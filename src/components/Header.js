@@ -11,13 +11,20 @@ const Header = (props) => {
 
 const styles = StyleSheet.create({
   header: {
-    paddingTop: 15,
+    paddingTop: 23,
     backgroundColor: '#F8F8F8',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    shadowColor: '#000',
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+
   },
   headerText: {
-    fontSize: 20
+    fontSize: 20,
+    paddingBottom: 5
   }
 });
 
