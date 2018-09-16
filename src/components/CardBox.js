@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-const Card = (props) => {
+const CardBox = (props) => {
   return (
     <View style={styles.containerStyle}>
       {props.children}
@@ -27,4 +27,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default Card;
+export default CardBox;

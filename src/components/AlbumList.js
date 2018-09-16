@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, Text, StyleSheet } from 'react-native';
 
 import AlbumDetail from './AlbumDetail';
 
 class AlbumList extends Component {
   state = {
-    albums: []
+    albums: [],
+    isLoading: true
   };
 
   componentWillMount(){
     fetch('https://rallycoding.herokuapp.com/api/music_albums')
       .then(res => res.json())
-      .then(data => this.setState({albums: data}))
+      .then(data => this.setState({albums: data, isLoading: false}))
   }
 
   renderAlbums(){
@@ -24,12 +25,20 @@ class AlbumList extends Component {
 
   render(){
     return (
-      <ScrollView>
-          {this.renderAlbums()}
-      </ScrollView>
+      <View style={styles.container}>
+          <ScrollView>
+              {this.renderAlbums()}
+          </ScrollView>
+      </View>
     );
+  };
+};
+
+const styles = StyleSheet.create({
+  container: {
+    paddingBottom: 65
   }
-}
+})
 
 
 export default AlbumList;

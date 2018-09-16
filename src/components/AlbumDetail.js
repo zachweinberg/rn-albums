@@ -1,14 +1,15 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
-import Card from './Card';
+import { View, Text, StyleSheet, Image, Linking } from 'react-native';
+import CardBox from './CardBox';
 import CardSection from './CardSection';
+import Button from './Button';
 
 const AlbumDetail = ({ album }) => {
   //Destructuring
-  const { title, artist, thumbnail_image, image } = album;
+  const { title, artist, thumbnail_image, image, url } = album;
 
   return (
-    <Card>
+    <CardBox>
       <CardSection>
         <View style={styles.thumbnailContainerStyle}>
           <Image
@@ -23,10 +24,16 @@ const AlbumDetail = ({ album }) => {
       </CardSection>
       <CardSection>
         <Image
-          source={{ uri: image}}
-          style={styles.imageStyle}/>
+          source={{ uri: image }}
+          style={styles.imageStyle}
+        />
       </CardSection>
-    </Card>
+      <CardSection>
+        <Button onPress={() => Linking.openURL(url)}>
+          Purchase
+        </Button>
+      </CardSection>
+    </CardBox>
   );
 };
 
@@ -40,8 +47,7 @@ const styles = StyleSheet.create({
   },
   thumbnailStyle: {
     width: 50,
-    height: 50,
-    borderRadius: 10
+    height: 50
   },
   thumbnailContainerStyle: {
     justifyContent: 'center',
